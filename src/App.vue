@@ -1,13 +1,46 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view/>
+    Y<form action="https://www.google.com">
+        <vue-tel-input
+        v-model="mobile"
+        @validate="check"
+        style="width:50%"
+        />
+        <p style="color:yellowgreen">{{message}}</p><br>
+        <input type="submit" value="Submit" v-if="!error">
+    </form>
   </div>
 </template>
+<script>
 
+import {VueTelInput} from 'vue-tel-input';
+import 'vue-phone-number-input/dist/vue-phone-number-input.css';
+
+    export default {
+        name: "PhoneNo",
+        components: {
+            VueTelInput
+        },
+        data: () => ({
+
+            mobile:'',
+            error:true,
+            message:''
+        }),
+        methods:{
+            check({ isValid}){
+                if(isValid===true){
+                    this.error=false
+                    this.message="Valid Phone Number"
+                }
+                else{
+                  this.error=true
+                  this.message=''
+                }
+            }
+        }
+    };
+</script>
 <style lang="scss">
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
