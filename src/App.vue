@@ -1,12 +1,12 @@
 <template>
   <div id="app">
-    Y<form action="https://www.google.com">
+    <form action="https://www.google.com">
         <vue-tel-input
         v-model="mobile"
         @validate="check"
         style="width:50%"
         />
-        <p style="color:yellowgreen">{{message}}</p><br>
+        <p style="color:yellowgreen;float:left;">{{message}}</p><br>
         <input type="submit" value="Submit" v-if="!error">
     </form>
   </div>
@@ -14,7 +14,6 @@
 <script>
 
 import {VueTelInput} from 'vue-tel-input';
-import 'vue-phone-number-input/dist/vue-phone-number-input.css';
 
     export default {
         name: "PhoneNo",
